@@ -23,11 +23,7 @@ use eframe::{
 fn main() -> eframe::Result<()> {
     env_logger::init();
     let options = NativeOptions::default();
-    eframe::run_native(
-        "My egui App",
-        options,
-        Box::new(|_cc| Box::<MyApp>::default()),
-    )
+    eframe::run_native("rvemu", options, Box::new(|_cc| Box::<MyApp>::default()))
 }
 
 struct TabViewer<'a> {
