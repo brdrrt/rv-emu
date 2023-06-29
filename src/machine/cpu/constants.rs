@@ -111,7 +111,7 @@ impl TryFrom<u32> for Instruction {
                 }))
             }
             0x0 => Err(DecodeError::OpcodeZero),
-            _ => unimplemented!(),
+            _ => unimplemented!("Unimpletented instruction type"),
         }
     }
 }
