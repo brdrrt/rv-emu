@@ -99,7 +99,6 @@ impl TryFrom<u32> for Instruction {
             // R Type
             0x33 => {
                 let rd = decode_destination_register(value);
-                // rs2 is ignored since it doesn't actually exist in R-type instructions
                 let (rs1, rs2) = decode_source_registers(value);
                 let (funct3, funct7) = decode_functs(value);
                 Ok(Self::R(RType {
