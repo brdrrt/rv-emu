@@ -1,3 +1,6 @@
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/briddarobert/rv-emu/rust.yml?style=for-the-badge)
+
+
 ## Compile-time dependencies
 
 - Rust programming language toolchain
