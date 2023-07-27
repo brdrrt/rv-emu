@@ -71,9 +71,21 @@ impl TabViewer<'_> {
                     .arg("flat")
                     .output();
                 if let Err(output) = output {
-                    error!("Error assembling code: {output}");
+                    error!("Error while assembling code: {output}");
                 } else if let Ok(output) = output {
-                    debug!("Assembler output: {:?}", output)
+                    if !output.status.success() {
+                        error!(
+                            "Error while assembling code (from assembler):\nstderr: {:?}\nExit status: {:?}",
+                            String::from_utf8(output.stderr)
+                                .expect("Couldn't parse the assembler's stderr as UTF-8"),
+                            output
+                                .status
+                                .code()
+                                .expect("Couldn't get the assembler's exit status")
+                        )
+                    } else {
+                        debug!("Successfully assembled code")
+                    }
                 }
 
                 *self.machine =
